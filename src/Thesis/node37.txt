@@ -1,0 +1,198 @@
+Sleep duration is: 54ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 195ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 368ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 252ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 45ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 553ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 546ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 224ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 361ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 380ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 253ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 223ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 529ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 154ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 212ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 209ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 410ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 281ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 289ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 100ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 348ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 422ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 337ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 445ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 334ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 190ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 333ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 461ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 84ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 314ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 332ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 540ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 272ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 329ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 370ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 350ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 372ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 349ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 378ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 227ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 91ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 58ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 348ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 280ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 123ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 152ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 290ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 509ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 389ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 126ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 494ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 420ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 462ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 304ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 325ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 378ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 390ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 177ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 363ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 241ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 570ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 155ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 55ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 43ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 45ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 401ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 407ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 566ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 353ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 197ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 517ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 600ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 434ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 110ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 406ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 566ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 441ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 538ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 311ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 329ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 98ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 481ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 287ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 345ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 551ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 588ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 413ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 337ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 378ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 51ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 67ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 242ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 513ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 385ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 389ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 369ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 292ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 454ms
+NeighbourListSizePercentage is: 100
+Sleep duration is: 166ms
+NeighbourListSizePercentage is: 100
