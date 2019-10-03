@@ -1,5 +1,0 @@
-Starting blockchain simulation program
-[START] 1 %
-Beginning Gossip for: 100 nodes
-NeighbourList Percentage: 1 %
-NeighbourList Size: 1
