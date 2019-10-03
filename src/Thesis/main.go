@@ -70,17 +70,7 @@ func killRoutines(nodes *[]node) {
 /*
  *	Runnable node method
  */
-func runNode(id int, name string, myNode *node, fanOut int) {
-	
-	resultsFile, error := os.Open("node" + strconv.Itoa(id) + ".txt")
-    if error != nil {
-	 	resultsFile, error = os.Create("node" + strconv.Itoa(id) + ".txt")
-		if error != nil {
-		    fmt.Println(error)
-		    return
-		}
-    }    
-	
+func runNode(id int, name string, myNode *node, fanOut int) {	
 	for {
 		runtime.Gosched()
 		//fmt.Println("Routines:", runtime.NumGoroutine())
@@ -91,9 +81,6 @@ func runNode(id int, name string, myNode *node, fanOut int) {
 			break
 		} else if recievedValue > 0 {
 			sleepDuration := time.Duration(rand.Intn(600 - 40 + 1) + 40) * time.Millisecond
-			//fmt.Println("Sleep duration is:", sleepDuration)
-			fmt.Fprintln(resultsFile, "Sleep duration is:", sleepDuration)
-			fmt.Fprintln(resultsFile, "NeighbourListSizePercentage is:", len((*myNode).neighbourIndices))
 			time.Sleep(sleepDuration)
 			if recievedValue >= (*myNode).version {
 				//update here
@@ -270,6 +257,18 @@ func main() {
 	time_after_gossip := int64(0)
 	
 	loadedCommands := readFromFile()
+	
+	total := float64(0)
+	
+	
+	prev := float64(0)
+	for i := 0; i < 1000000000000; i++ {
+		prev = progressUpdate(i, 1000000000000, prev, "Percent complete: ")
+		total += float64(rand.Intn(600 - 40 + 1) + 40)
+	}
+	total = total/float64(1000000000000)
+	fmt.Println(total)
+	
 	
 	var wg sync.WaitGroup
 	var nodes []node
