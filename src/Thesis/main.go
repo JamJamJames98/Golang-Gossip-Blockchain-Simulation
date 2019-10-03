@@ -70,45 +70,50 @@ func killRoutines(nodes *[]node) {
 /*
  *	Runnable node method
  */
-func runNode(id int, name string, myNode *node, fanOut int) {	
+func runNode(id int, name string, myNode *node, fanOut int) {
 	for {
 		runtime.Gosched()
+		afterChannel := time.After(rand.Intn(600 - 40 + 1) + 40) * time.Second)
 		//fmt.Println("Routines:", runtime.NumGoroutine())
-		recievedValue := <- (*myNode).channel
-		atomic.AddInt32(gossiping, 1)
-		if recievedValue == -1 {
-			atomic.AddInt32(gossiping, -1)
-			break
-		} else if recievedValue > 0 {
-			sleepDuration := time.Duration(rand.Intn(600 - 40 + 1) + 40) * time.Millisecond
-			time.Sleep(sleepDuration)
-			if recievedValue >= (*myNode).version {
-				//update here
-				if recievedValue > (*myNode).version {
-					atomic.AddInt32(consensus, 1)
-					(*myNode).version = recievedValue
-					//fmt.Println("Setting node", (*myNode).id, "to version", recievedValue)
-					//gossip to all neighbours
-					for i := 0; i < len((*myNode).neighbourNodes); i++ {
-						//check edge case if neighbour is set to itself (random neighbour list generation sometimes causes this)
-						if (*myNode).neighbourNodes[i].channel != (*myNode).channel {
-							atomic.AddInt32(messageBackLog, 1)
-							//fmt.Println("Sending:", recievedValue, "To overwrite:", (*myNode).neighbourNodes[i].version, "At Node id:'", (*myNode).neighbourNodes[i].id, "' From Node id:'", (*myNode).id, "'")
-							(*myNode).neighbourNodes[i].channel <- (*myNode).version
-							(*myNode).numberOfMessages++
+		select {
+		case recievedValue := <- (*myNode).channel:
+			atomic.AddInt32(gossiping, 1)
+			if recievedValue == -1 {
+				atomic.AddInt32(gossiping, -1)
+				break
+			} else if recievedValue > 0 {	
+				sleepDuration := time.Duration(rand.Intn(600 - 40 + 1) + 40) * time.Millisecond
+				time.Sleep(sleepDuration)
+				if recievedValue >= (*myNode).version {	
+					//update here
+					if recievedValue > (*myNode).version {
+						atomic.AddInt32(consensus, 1)
+						(*myNode).version = recievedValue
+						//fmt.Println("Setting node", (*myNode).id, "to version", recievedValue)
+						//gossip to all neighbours
+						for i := 0; i < len((*myNode).neighbourNodes); i++ {
+							//check edge case if neighbour is set to itself (random neighbour list generation sometimes causes this)
+							if (*myNode).neighbourNodes[i].channel != (*myNode).channel {
+								atomic.AddInt32(messageBackLog, 1)
+								//fmt.Println("Sending:", recievedValue, "To overwrite:", (*myNode).neighbourNodes[i].version, "At Node id:'", (*myNode).neighbourNodes[i].id, "' From Node id:'", (*myNode).id, "'")
+								(*myNode).neighbourNodes[i].channel <- (*myNode).version
+								(*myNode).numberOfMessages++
+							}
 						}
+						//fmt.Println("Finished sending to neighbours")
+					} else {
+						//fmt.Println("[DUPLICATE] - Node ID:", (*myNode).id)
 					}
-					//fmt.Println("Finished sending to neighbours")
-				} else {
-					//fmt.Println("[DUPLICATE] - Node ID:", (*myNode).id)
+				} else {	
+					//do nothing with old or malformed version
 				}
-			} else {
-				//do nothing with old or malformed version
 			}
+			//fmt.Println("Decrementing gossip for node at id:", id)
+			atomic.AddInt32(messageBackLog, -1)
+			atomic.AddInt32(gossiping, -1)
+		case <- afterChannel:
+			fmt.Println("Pull request for node at id:", id)
 		}
-		//fmt.Println("Decrementing gossip for node at id:", id)
-		atomic.AddInt32(messageBackLog, -1)
-		atomic.AddInt32(gossiping, -1)
 	}
 }
 
@@ -257,27 +262,7 @@ func main() {
 	time_after_gossip := int64(0)
 	
 	loadedCommands := readFromFile()
-	
-	total := float64(0)
-	
-	fmt.Println("beginning simulation of ping - 1 trillion times")
-	prev := float64(0)
-	counter := 0
-	billionCount := 0
-	for i := 0; i < 5000000000; i++ {
-		if counter == 1000000000 {
-			billionCount++
-			fmt.Println(billionCount, "billion done")
-			counter = 0
-		}
-		prev = progressUpdate(i, 5000000000, prev, "Percent complete: ")
-		total += float64(rand.Intn(600 - 40 + 1) + 40)
-		counter++
-	}
-	total = total/float64(5000000000)
-	fmt.Println(total)
-	
-	
+		
 	var wg sync.WaitGroup
 	var nodes []node
 	scanner := bufio.NewScanner(os.Stdin)
