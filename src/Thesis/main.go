@@ -264,17 +264,17 @@ func main() {
 	prev := float64(0)
 	counter := 0
 	billionCount := 0
-	for i := 0; i < 1000000000000; i++ {
+	for i := 0; i < 5000000000; i++ {
 		if counter == 1000000000 {
 			billionCount++
 			fmt.Println(billionCount, "billion done")
 			counter = 0
 		}
-		prev = progressUpdate(i, 1000000000000, prev, "Percent complete: ")
+		prev = progressUpdate(i, 5000000000, prev, "Percent complete: ")
 		total += float64(rand.Intn(600 - 40 + 1) + 40)
 		counter++
 	}
-	total = total/float64(1000000000000)
+	total = total/float64(5000000000)
 	fmt.Println(total)
 	
 	
