@@ -81,13 +81,13 @@ func killRoutines(nodes *[]node) {
 func runNode(id int, name string, myNode *node, fanOut int, size int) {
 	runtime.Gosched()
 	//ensure that all spawning is complete
-	for runtime.NumGoroutine() < size+1 {
+	for runtime.NumGoroutine() < size {
 		time.Sleep(1)
 		//wait for all nodes to spawn
 	}
-	
+
 	for {
-		randTime := rand.Intn(120)
+		randTime := rand.Intn(60)
 		afterChannel := time.After(time.Duration(randTime) * time.Second)
 		//fmt.Println("Routines:", runtime.NumGoroutine())
 		select {
@@ -95,7 +95,7 @@ func runNode(id int, name string, myNode *node, fanOut int, size int) {
 			atomic.AddInt32(gossiping, 1)
 			if recievedValue == -1 {
 				atomic.AddInt32(gossiping, -1)
-				break
+				return
 			} else if recievedValue > 0 {	
 				sleepDuration := time.Duration(rand.Intn(600 - 40 + 1) + 40) * time.Millisecond
 				time.Sleep(sleepDuration)
@@ -131,7 +131,6 @@ func runNode(id int, name string, myNode *node, fanOut int, size int) {
 			(*myNode).requestData.version = (*myNode).version
 			(*myNode).neighbourNodes[neighbourToRequestFrom].requestChannel <- (*myNode).requestData
 		case recievedData := <- (*myNode).requestChannel:
-			atomic.AddInt32(gossiping, 1)
 			sleepDuration := time.Duration(rand.Intn(600 - 40 + 1) + 40) * time.Millisecond
 			time.Sleep(sleepDuration)
 			if recievedData.version < (*myNode).version {
@@ -139,8 +138,6 @@ func runNode(id int, name string, myNode *node, fanOut int, size int) {
 				recievedData.channel <- (*myNode).version
 				(*myNode).numberOfUpdates++
 			}	
-			atomic.AddInt32(gossiping, -1)
-			atomic.AddInt32(updateBackLog, -1)
 		}
 	}
 }
@@ -213,26 +210,30 @@ func checkForConsensus(numberOfNodes int, time_of_consensus int64, time_before_g
 	} 
 	consensus_bool := false
 	previous := int32(0)
-    //for atomic.LoadInt32(gossiping) >= 0 && atomic.LoadInt32(updateBackLog) >= 0 {
-    for consensus_bool == false {
+	previousConsensus := int32(0)
+    for (atomic.LoadInt32(gossiping) > 0 && atomic.LoadInt32(updateBackLog) > 0) || consensus_bool == false {
     	if atomic.LoadInt32(consensus) == int32(numberOfNodes) && consensus_bool == false {
     		time_of_consensus = time.Now().UnixNano()
     		consensus_bool = true
     	}
     	current := atomic.LoadInt32(gossiping)
+    	currentConsensus := atomic.LoadInt32(consensus)
     	if current != previous {
     		//fmt.Println("Gossiping is:", atomic.LoadInt32(gossiping))
 			//fmt.Println("updateBackLog is:", atomic.LoadInt32(updateBackLog))
     		//fmt.Println("Nodes gossiping is:", current)
     	}
+    	
+    	if currentConsensus != previousConsensus {
+    		fmt.Println("Consensus progress is:", atomic.LoadInt32(consensus))
+    	}
+    	
     	previous = current
-    	if (time.Now().UnixNano()-time_before_gossip)/int64(time.Millisecond) > 60000 {
+    	previousConsensus = currentConsensus
+    	if (time.Now().UnixNano()-time_before_gossip)/int64(time.Millisecond) > 61000 {
     		fmt.Println("Been over a minute, exiting...")
     		break
     	}
-    	/*if atomic.LoadInt32(gossiping) == 0 && atomic.LoadInt32(updateBackLog) == 0 {
-    		break
-    	}*/
     }
     //fmt.Println("Nodes gossiping is:", atomic.LoadInt32(gossiping))
     time_after_gossip = time.Now().UnixNano()
