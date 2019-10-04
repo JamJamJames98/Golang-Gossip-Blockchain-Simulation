@@ -19,10 +19,18 @@ type node struct {
 	version int
 	status bool
 	channel chan int
+	requestChannel chan RequestData
 	neighbourNodes []*node
 	neighbourIndices []int
 	neighboursSentTo []int
-	numberOfMessages int	
+	numberOfMessages int
+	numberOfUpdates int
+	requestData RequestData
+}
+
+type RequestData struct {
+	channel chan int
+	version int
 }
 
 type networkStatus struct {
@@ -32,7 +40,7 @@ type networkStatus struct {
 
 var gossiping *int32 = new(int32)
 var consensus *int32 = new(int32)
-var messageBackLog *int32 = new(int32)
+var updateBackLog *int32 = new(int32)
 
 /*
  *	Provides updates to the user when spawning/killing nodes
@@ -51,17 +59,17 @@ func progressUpdate(i int, size int, prev float64, message string) float64 {
  *	Orchestrator method to kill all waiting threads, calls killNode
  */
 func killRoutines(nodes *[]node) {
-	fmt.Println("Current number of routines running is:", runtime.NumGoroutine())
 	for i := 0; i < len(*nodes); i++ {
 		(*nodes)[i].channel <- -1
 	}
 	for runtime.NumGoroutine() > 1 {
+		time.Sleep(1)
 		//wait for threads to die 
 	}
 	(*nodes) = nil
 	atomic.AddInt32(gossiping, -atomic.LoadInt32(gossiping))
     atomic.AddInt32(consensus, -atomic.LoadInt32(consensus))
-    atomic.AddInt32(messageBackLog, -atomic.LoadInt32(messageBackLog))
+    atomic.AddInt32(updateBackLog, -atomic.LoadInt32(updateBackLog))
     //fmt.Println("Gossiping is:", atomic.LoadInt32(gossiping))
     runtime.GC()
     debug.FreeOSMemory()
@@ -70,10 +78,17 @@ func killRoutines(nodes *[]node) {
 /*
  *	Runnable node method
  */
-func runNode(id int, name string, myNode *node, fanOut int) {
+func runNode(id int, name string, myNode *node, fanOut int, size int) {
+	runtime.Gosched()
+	//ensure that all spawning is complete
+	for runtime.NumGoroutine() < size+1 {
+		time.Sleep(1)
+		//wait for all nodes to spawn
+	}
+	
 	for {
-		runtime.Gosched()
-		afterChannel := time.After(rand.Intn(600 - 40 + 1) + 40) * time.Second)
+		randTime := rand.Intn(120)
+		afterChannel := time.After(time.Duration(randTime) * time.Second)
 		//fmt.Println("Routines:", runtime.NumGoroutine())
 		select {
 		case recievedValue := <- (*myNode).channel:
@@ -94,10 +109,10 @@ func runNode(id int, name string, myNode *node, fanOut int) {
 						for i := 0; i < len((*myNode).neighbourNodes); i++ {
 							//check edge case if neighbour is set to itself (random neighbour list generation sometimes causes this)
 							if (*myNode).neighbourNodes[i].channel != (*myNode).channel {
-								atomic.AddInt32(messageBackLog, 1)
+								atomic.AddInt32(updateBackLog, 1)
 								//fmt.Println("Sending:", recievedValue, "To overwrite:", (*myNode).neighbourNodes[i].version, "At Node id:'", (*myNode).neighbourNodes[i].id, "' From Node id:'", (*myNode).id, "'")
 								(*myNode).neighbourNodes[i].channel <- (*myNode).version
-								(*myNode).numberOfMessages++
+								(*myNode).numberOfUpdates++
 							}
 						}
 						//fmt.Println("Finished sending to neighbours")
@@ -109,10 +124,23 @@ func runNode(id int, name string, myNode *node, fanOut int) {
 				}
 			}
 			//fmt.Println("Decrementing gossip for node at id:", id)
-			atomic.AddInt32(messageBackLog, -1)
+			atomic.AddInt32(updateBackLog, -1)
 			atomic.AddInt32(gossiping, -1)
 		case <- afterChannel:
-			fmt.Println("Pull request for node at id:", id)
+			neighbourToRequestFrom := rand.Intn(len((*myNode).neighbourNodes))
+			(*myNode).requestData.version = (*myNode).version
+			(*myNode).neighbourNodes[neighbourToRequestFrom].requestChannel <- (*myNode).requestData
+		case recievedData := <- (*myNode).requestChannel:
+			atomic.AddInt32(gossiping, 1)
+			sleepDuration := time.Duration(rand.Intn(600 - 40 + 1) + 40) * time.Millisecond
+			time.Sleep(sleepDuration)
+			if recievedData.version < (*myNode).version {
+				atomic.AddInt32(updateBackLog, 1)
+				recievedData.channel <- (*myNode).version
+				(*myNode).numberOfUpdates++
+			}	
+			atomic.AddInt32(gossiping, -1)
+			atomic.AddInt32(updateBackLog, -1)
 		}
 	}
 }
@@ -128,6 +156,8 @@ func spawnFunction(size int, nodes *[]node, neighbourListSize int, fanOut int) {
 	for i := 0; i < size; i++ {
 		//prev = progressUpdate(i, size, prev, "Spawn Progress: ")
 		(*nodes)[i].channel = make(chan int, size+1)
+		(*nodes)[i].requestChannel = make(chan RequestData, size+1)
+		(*nodes)[i].requestData.channel = (*nodes)[i].channel
 		(*nodes)[i].id = i
 		(*nodes)[i].version = 0
 		if (neighbourListSize > size) {
@@ -142,28 +172,9 @@ func spawnFunction(size int, nodes *[]node, neighbourListSize int, fanOut int) {
 		for j := 0; j < len((*nodes)[i].neighbourIndices); j++ {
 			(*nodes)[i].neighbourNodes[j] = &(*nodes)[(*nodes)[i].neighbourIndices[j]]
 		}
-		go runNode(i, "Spawning", &(*nodes)[i], fanOut)
+		go runNode(i, "Spawning", &(*nodes)[i], fanOut, size)
 	}
 	//fmt.Println("Spawn Function Finished")
-}
-
-func updateNeighbourListSize(nodes *[]node, neighbourListSize int) {
-	//fmt.Println("Updating neighbour list size to be:", neighbourListSize)
-	for i := 0; i < len((*nodes)); i++ {
-		if neighbourListSize > len((*nodes)) {
-			neighbourIndices := rand.Perm(len((*nodes)))[:len((*nodes))]
-			(*nodes)[i].neighbourIndices = neighbourIndices
-			(*nodes)[i].neighbourNodes = make([]*node, len(neighbourIndices))
-		} else {
-			neighbourIndices := rand.Perm(len((*nodes)))[:neighbourListSize]
-			(*nodes)[i].neighbourIndices = neighbourIndices
-			(*nodes)[i].neighbourNodes = make([]*node, len(neighbourIndices))
-		}
-		for j := 0; j < len((*nodes)[i].neighbourIndices); j++ {
-			(*nodes)[i].neighbourNodes[j] = &(*nodes)[(*nodes)[i].neighbourIndices[j]]
-		}
-	}
-	//fmt.Println("Done updating")
 }
 
 func readFromFile() []string {
@@ -195,14 +206,15 @@ func readFromFile() []string {
 func checkForConsensus(numberOfNodes int, time_of_consensus int64, time_before_gossip int64, time_after_gossip int64, resultsFile *os.File) {
 	fmt.Println("Checking for consensus...")
 	//fmt.Println("Gossiping is:", atomic.LoadInt32(gossiping))
-	//fmt.Println("MessageBackLog is:", atomic.LoadInt32(messageBackLog))
-	if atomic.LoadInt32(gossiping) == 0 && atomic.LoadInt32(messageBackLog) == 0 {
+	//fmt.Println("updateBackLog is:", atomic.LoadInt32(updateBackLog))
+	if atomic.LoadInt32(gossiping) == 0 && atomic.LoadInt32(updateBackLog) == 0 {
 		fmt.Println("Not running")
 		return
 	} 
 	consensus_bool := false
 	previous := int32(0)
-    for atomic.LoadInt32(gossiping) >= 0 && atomic.LoadInt32(messageBackLog) >= 0 {
+    //for atomic.LoadInt32(gossiping) >= 0 && atomic.LoadInt32(updateBackLog) >= 0 {
+    for consensus_bool == false {
     	if atomic.LoadInt32(consensus) == int32(numberOfNodes) && consensus_bool == false {
     		time_of_consensus = time.Now().UnixNano()
     		consensus_bool = true
@@ -210,13 +222,17 @@ func checkForConsensus(numberOfNodes int, time_of_consensus int64, time_before_g
     	current := atomic.LoadInt32(gossiping)
     	if current != previous {
     		//fmt.Println("Gossiping is:", atomic.LoadInt32(gossiping))
-			//fmt.Println("MessageBackLog is:", atomic.LoadInt32(messageBackLog))
+			//fmt.Println("updateBackLog is:", atomic.LoadInt32(updateBackLog))
     		//fmt.Println("Nodes gossiping is:", current)
     	}
     	previous = current
-    	if atomic.LoadInt32(gossiping) == 0 && atomic.LoadInt32(messageBackLog) == 0 {
+    	if (time.Now().UnixNano()-time_before_gossip)/int64(time.Millisecond) > 60000 {
+    		fmt.Println("Been over a minute, exiting...")
     		break
     	}
+    	/*if atomic.LoadInt32(gossiping) == 0 && atomic.LoadInt32(updateBackLog) == 0 {
+    		break
+    	}*/
     }
     //fmt.Println("Nodes gossiping is:", atomic.LoadInt32(gossiping))
     time_after_gossip = time.Now().UnixNano()
@@ -253,7 +269,7 @@ func main() {
 	*/
 	fanOut := 4
 	//timeBetweenRounds := 10
-	neighbourListSizePercentage := float64(95)
+	neighbourListSizePercentage := float64(5)
 	//fmt.Println(neighbourListSizePercentage)
 	version := 0
 	
@@ -322,7 +338,7 @@ func main() {
     			var networkStatusData []networkStatus
     			totalMessages := 0
     			for i := 0; i < len(nodes); i++ {
-    				totalMessages = totalMessages + nodes[i].numberOfMessages
+    				totalMessages = totalMessages + nodes[i].numberOfUpdates
     				found := false
     				for j := 0; j < len(networkStatusData); j++ {
     					if nodes[i].version == networkStatusData[j].version {
@@ -362,9 +378,9 @@ func main() {
 			    	fmt.Fprintln(resultsFile, "NeighbourList Size:", neighbourListSize)
 			    	version++
 			    	time_before_gossip = time.Now().UnixNano()
-			    	atomic.AddInt32(messageBackLog, 1)
+			    	atomic.AddInt32(updateBackLog, 1)
 			    	nodes[nodeIndex].channel <- version
-	    			for atomic.LoadInt32(gossiping) <= 0 && atomic.LoadInt32(messageBackLog) <= 0 {
+	    			for atomic.LoadInt32(gossiping) <= 0 && atomic.LoadInt32(updateBackLog) <= 0 {
 	    				//fmt.Println("Waiting for gossip to start")
 			    	}
 	    			checkForConsensus(numberOfNodes, time_of_consensus, time_before_gossip, time_after_gossip, resultsFile)
@@ -387,7 +403,15 @@ func main() {
 			    if neighbourListSize < 1 {
 			    	neighbourListSize = 1
 			    }
-    			updateNeighbourListSize(&nodes, neighbourListSize)
+			    
+			    spawnAmount := len(nodes)
+			    
+			    if len(nodes) > 0 {
+			    	killRoutines(&nodes)
+			    	version = 0
+			    }
+			    fmt.Println("Neighbour List Size Percentage Is:", neighbourListSize)
+			    spawnFunction(spawnAmount, &nodes, neighbourListSize, fanOut)
     			fmt.Println("[COMPLETE] UPDATENLISTSIZE")
     		}
     	} else if currCommandElements[0] == "RESET" && len(currCommandElements) == 1 {
@@ -395,7 +419,7 @@ func main() {
     			version = 0
     			atomic.AddInt32(gossiping, -atomic.LoadInt32(gossiping))
     			atomic.AddInt32(consensus, -atomic.LoadInt32(consensus))
-    			atomic.AddInt32(messageBackLog, -atomic.LoadInt32(messageBackLog))
+    			atomic.AddInt32(updateBackLog, -atomic.LoadInt32(updateBackLog))
     			//fmt.Println("Gossiping is:", atomic.LoadInt32(gossiping))
     			runtime.GC()
     			debug.FreeOSMemory()
