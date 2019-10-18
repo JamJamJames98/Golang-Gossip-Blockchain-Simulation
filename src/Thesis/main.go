@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"sync"
 	"bufio"
 	"os"
 	"strings"
@@ -41,6 +40,7 @@ type networkStatus struct {
 var gossiping *int32 = new(int32)
 var consensus *int32 = new(int32)
 var updateBackLog *int32 = new(int32)
+var randomUpdateInterval *int32 = new(int32)
 
 /*
  *	Provides updates to the user when spawning/killing nodes
@@ -63,7 +63,7 @@ func killRoutines(nodes *[]node) {
 		(*nodes)[i].channel <- -1
 	}
 	for runtime.NumGoroutine() > 1 {
-		time.Sleep(1)
+		time.Sleep(1 * time.Nanosecond)
 		//wait for threads to die 
 	}
 	(*nodes) = nil
@@ -82,21 +82,27 @@ func runNode(id int, name string, myNode *node, fanOut int, size int) {
 	runtime.Gosched()
 	//ensure that all spawning is complete
 	for runtime.NumGoroutine() < size {
-		time.Sleep(1)
+		time.Sleep(1 * time.Nanosecond)
 		//wait for all nodes to spawn
 	}
 
 	for {
-		randTime := rand.Intn(60)
+		runtime.Gosched()
+		//setup formula to randomly sleep for before pulling
+		randTime := rand.Intn(int(atomic.LoadInt32(randomUpdateInterval)))
 		afterChannel := time.After(time.Duration(randTime) * time.Second)
 		//fmt.Println("Routines:", runtime.NumGoroutine())
+		time.Sleep(1 * time.Nanosecond)
 		select {
 		case recievedValue := <- (*myNode).channel:
+			//recieved a message to main channel - handle it
 			atomic.AddInt32(gossiping, 1)
 			if recievedValue == -1 {
+				//fmt.Println("Recieved a value to channel")
 				atomic.AddInt32(gossiping, -1)
 				return
 			} else if recievedValue > 0 {	
+				fmt.Println("Node id", id, "recieved a value")
 				sleepDuration := time.Duration(rand.Intn(600 - 40 + 1) + 40) * time.Millisecond
 				time.Sleep(sleepDuration)
 				if recievedValue >= (*myNode).version {	
@@ -115,7 +121,7 @@ func runNode(id int, name string, myNode *node, fanOut int, size int) {
 								(*myNode).numberOfUpdates++
 							}
 						}
-						//fmt.Println("Finished sending to neighbours")
+						fmt.Println("Finished sending to neighbours")
 					} else {
 						//fmt.Println("[DUPLICATE] - Node ID:", (*myNode).id)
 					}
@@ -127,17 +133,21 @@ func runNode(id int, name string, myNode *node, fanOut int, size int) {
 			atomic.AddInt32(updateBackLog, -1)
 			atomic.AddInt32(gossiping, -1)
 		case <- afterChannel:
+			//hit the time limit to randomly pull - send current version out
 			neighbourToRequestFrom := rand.Intn(len((*myNode).neighbourNodes))
 			(*myNode).requestData.version = (*myNode).version
 			(*myNode).neighbourNodes[neighbourToRequestFrom].requestChannel <- (*myNode).requestData
 		case recievedData := <- (*myNode).requestChannel:
+			//recieved a nodes version and their channel, respond if we have newer
 			sleepDuration := time.Duration(rand.Intn(600 - 40 + 1) + 40) * time.Millisecond
 			time.Sleep(sleepDuration)
 			if recievedData.version < (*myNode).version {
 				atomic.AddInt32(updateBackLog, 1)
 				recievedData.channel <- (*myNode).version
 				(*myNode).numberOfUpdates++
-			}	
+			}
+		//default:
+		//	runtime.Gosched()
 		}
 	}
 }
@@ -279,15 +289,14 @@ func main() {
 	time_after_gossip := int64(0)
 	
 	loadedCommands := readFromFile()
+	atomic.AddInt32(randomUpdateInterval, 60)
 		
-	var wg sync.WaitGroup
 	var nodes []node
 	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Println("Starting blockchain simulation program")
 	fmt.Fprintln(resultsFile, "Starting blockchain simulation program")
 	
     for true {
-    	wg.Wait()
     	//fmt.Println("Routines running:",runtime.NumGoroutine())
     	//if statement to use loadedCommands instead of user input
     	currCommand := ""
@@ -321,6 +330,7 @@ func main() {
 			    	fmt.Println("Neighbour List Size Percentage Is:", neighbourListSize)
 			    	spawnFunction(spawnAmount, &nodes, neighbourListSize, fanOut)
 			    	fmt.Println("[COMPLETE] SPAWN")
+			    	fmt.Println("Number of goroutines is:", runtime.NumGoroutine())
 	    		} 
     		}
     	} else if currCommandElements[0] == "BROADCAST" && len(currCommandElements) == 1 {
@@ -392,7 +402,12 @@ func main() {
     		fmt.Println("Current number of routines running is:", runtime.NumGoroutine())
     		fmt.Println("[COMPLETE] ROUTINES")
     	} else if currCommandElements[0] == "UPDATENLISTSIZE" && len(currCommandElements) == 2 {
+    		if runtime.NumGoroutine() > 1 {
+    			fmt.Println("Please KILL the network first before making changes")
+    			continue
+    		}
     		if newSize, err := strconv.Atoi(currCommandElements[1]); err == nil {
+    			fmt.Println("Starting updateNlistsize")
     			if newSize > 100 {
     				neighbourListSizePercentage = float64(100)
     			} else if newSize < 1 {
@@ -400,19 +415,6 @@ func main() {
     			} else {
     				neighbourListSizePercentage = float64(newSize)
     			}
-    			neighbourListSize := int(neighbourListSizePercentage*float64(len(nodes))/float64(100))
-			    if neighbourListSize < 1 {
-			    	neighbourListSize = 1
-			    }
-			    
-			    spawnAmount := len(nodes)
-			    
-			    if len(nodes) > 0 {
-			    	killRoutines(&nodes)
-			    	version = 0
-			    }
-			    fmt.Println("Neighbour List Size Percentage Is:", neighbourListSize)
-			    spawnFunction(spawnAmount, &nodes, neighbourListSize, fanOut)
     			fmt.Println("[COMPLETE] UPDATENLISTSIZE")
     		}
     	} else if currCommandElements[0] == "RESET" && len(currCommandElements) == 1 {
@@ -425,6 +427,11 @@ func main() {
     			runtime.GC()
     			debug.FreeOSMemory()
     			fmt.Println("[COMPLETE] RESET")
+    		}
+    	} else if currCommandElements[0] == "UPDATEINTERVALTIME" && len(currCommandElements) == 2 {
+    		if newInterval, err := strconv.Atoi(currCommandElements[1]); err == nil {
+    			atomic.AddInt32(randomUpdateInterval, int32(newInterval)-atomic.LoadInt32(randomUpdateInterval))
+    			fmt.Println("[COMPLETE] UPDATEINTERVALTIME")
     		}
     	}
     }
