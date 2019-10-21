@@ -25,6 +25,7 @@ type node struct {
 	numberOfMessages int
 	numberOfUpdates int
 	requestData RequestData
+	nodeType string
 }
 
 type RequestData struct {
@@ -43,9 +44,9 @@ var updateBackLog *int32 = new(int32)
 var randomUpdateInterval *int32 = new(int32)
 
 /*
- *	Spawns A Push And Pull Node
+ *	Spawns a node
  */
-func runPushAndPullNode(id int, name string, myNode *node, size int) {
+func runNode(id int, name string, myNode *node, size int) {
 	runtime.Gosched()
 	for runtime.NumGoroutine() < size {
 		time.Sleep(1 * time.Nanosecond)
@@ -53,8 +54,14 @@ func runPushAndPullNode(id int, name string, myNode *node, size int) {
 
 	for {
 		runtime.Gosched()
-		randTime := rand.Intn(int(atomic.LoadInt32(randomUpdateInterval)))
-		afterChannel := time.After(time.Duration(randTime) * time.Second)
+		afterChannel := make(<-chan time.Time)
+
+		//only implement the AfterChannel if it is a node that can pull
+		if (*myNode).nodeType == "PUSH&PULL" {
+			randTime := rand.Intn(int(atomic.LoadInt32(randomUpdateInterval)))
+			afterChannel = time.After(time.Duration(randTime) * time.Second)
+		}
+		
 		time.Sleep(1 * time.Nanosecond)
 		select {
 		case recievedValue := <- (*myNode).channel:
@@ -86,6 +93,7 @@ func runPushAndPullNode(id int, name string, myNode *node, size int) {
 			atomic.AddInt32(updateBackLog, -1)
 			atomic.AddInt32(gossiping, -1)
 		case <- afterChannel:
+			fmt.Println("AFter channel worked")
 			neighbourToRequestFrom := rand.Intn(len((*myNode).neighbourNodes))
 			(*myNode).requestData.version = (*myNode).version
 			(*myNode).neighbourNodes[neighbourToRequestFrom].requestChannel <- (*myNode).requestData
@@ -97,51 +105,6 @@ func runPushAndPullNode(id int, name string, myNode *node, size int) {
 				recievedData.channel <- (*myNode).version
 				(*myNode).numberOfUpdates++
 			}
-		}
-	}
-}
-
-/*
- *	Spawns A Push Only Node
- */
-func runPushNode(id int, name string, myNode *node, size int) {
-	runtime.Gosched()
-	for runtime.NumGoroutine() < size {
-		time.Sleep(1 * time.Nanosecond)
-	}
-
-	for {
-		runtime.Gosched()
-		time.Sleep(1 * time.Nanosecond)
-		select {
-		case recievedValue := <- (*myNode).channel:
-			atomic.AddInt32(gossiping, 1)
-			if recievedValue == -1 {
-				atomic.AddInt32(gossiping, -1)
-				return
-			} else if recievedValue > 0 {	
-				fmt.Println("Node id", id, "recieved a value")
-				sleepDuration := time.Duration(rand.Intn(600 - 40 + 1) + 40) * time.Millisecond
-				time.Sleep(sleepDuration)
-				if recievedValue >= (*myNode).version {	
-					if recievedValue > (*myNode).version {
-						atomic.AddInt32(consensus, 1)
-						(*myNode).version = recievedValue
-						for i := 0; i < len((*myNode).neighbourNodes); i++ {
-							if (*myNode).neighbourNodes[i].channel != (*myNode).channel {
-								atomic.AddInt32(updateBackLog, 1)
-								(*myNode).neighbourNodes[i].channel <- (*myNode).version
-								(*myNode).numberOfUpdates++
-							}
-						}
-						fmt.Println("Finished sending to neighbours")
-					} else {
-					}
-				} else {	
-				}
-			}
-			atomic.AddInt32(updateBackLog, -1)
-			atomic.AddInt32(gossiping, -1)
 		}
 	}
 }
@@ -172,6 +135,7 @@ func spawnFunction(size int, nodes *[]node, neighbourListSize int, nodeType stri
 		(*nodes)[i].requestData.channel = (*nodes)[i].channel
 		(*nodes)[i].id = i
 		(*nodes)[i].version = 0
+		(*nodes)[i].nodeType = nodeType
 		if (neighbourListSize > size) {
 			neighbourIndices := rand.Perm(size)[:size]
 			(*nodes)[i].neighbourIndices = neighbourIndices
@@ -184,11 +148,7 @@ func spawnFunction(size int, nodes *[]node, neighbourListSize int, nodeType stri
 		for j := 0; j < len((*nodes)[i].neighbourIndices); j++ {
 			(*nodes)[i].neighbourNodes[j] = &(*nodes)[(*nodes)[i].neighbourIndices[j]]
 		}
-		if nodeType == "PUSH" {
-			go runPushNode(i, "Spawning", &(*nodes)[i], size)
-		} else if nodeType == "PUSH&PULL" {
-			go runPushAndPullNode(i, "Spawning", &(*nodes)[i], size)
-		}
+		go runNode(i, "Spawning", &(*nodes)[i], size)
 	}
 }
 
