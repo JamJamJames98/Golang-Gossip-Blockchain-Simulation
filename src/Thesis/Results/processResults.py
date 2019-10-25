@@ -124,9 +124,6 @@ line = file.readline()
 counter = 0
 
 while True:
-	if (counter == 4855):
-		break
-
 	index = getIndex(file)
 
 	if (index == -1):

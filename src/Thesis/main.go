@@ -26,6 +26,7 @@ type node struct {
 	numberOfUpdates int
 	requestData RequestData
 	nodeType string
+	
 }
 
 type RequestData struct {
@@ -51,6 +52,7 @@ func runNode(id int, name string, myNode *node, size int) {
 	for runtime.NumGoroutine() < size {
 		time.Sleep(1 * time.Nanosecond)
 	}
+	fmt.Println((*myNode).neighbourIndices)
 
 	for {
 		runtime.Gosched()
@@ -93,10 +95,11 @@ func runNode(id int, name string, myNode *node, size int) {
 			atomic.AddInt32(updateBackLog, -1)
 			atomic.AddInt32(gossiping, -1)
 		case <- afterChannel:
-			fmt.Println("AFter channel worked")
-			neighbourToRequestFrom := rand.Intn(len((*myNode).neighbourNodes))
+			//neighbourToRequestFrom := rand.Intn(len((*myNode).neighbourNodes))
 			(*myNode).requestData.version = (*myNode).version
-			(*myNode).neighbourNodes[neighbourToRequestFrom].requestChannel <- (*myNode).requestData
+			for i := 0; i < len((*myNode).neighbourNodes); i++ {
+				(*myNode).neighbourNodes[/*neighbourToRequestFrom*/i].requestChannel <- (*myNode).requestData
+			}
 		case recievedData := <- (*myNode).requestChannel:
 			sleepDuration := time.Duration(rand.Intn(600 - 40 + 1) + 40) * time.Millisecond
 			time.Sleep(sleepDuration)
@@ -210,9 +213,10 @@ func checkForConsensus(numberOfNodes int, time_of_consensus int64, time_before_g
     	current := atomic.LoadInt32(gossiping)
     	currentConsensus := atomic.LoadInt32(consensus)
     	if current != previous {
-    		/*fmt.Println("Gossiping is:", atomic.LoadInt32(gossiping))
+    		fmt.Println("Gossiping is:", atomic.LoadInt32(gossiping))
 			fmt.Println("updateBackLog is:", atomic.LoadInt32(updateBackLog))
-    		fmt.Println("Nodes gossiping is:", current)*/
+    		fmt.Println("Nodes gossiping is:", current)
+    		fmt.Println("Consensus progress is:", atomic.LoadInt32(consensus))
     	}
     	
     	if currentConsensus != previousConsensus {
@@ -221,10 +225,10 @@ func checkForConsensus(numberOfNodes int, time_of_consensus int64, time_before_g
     	
     	previous = current
     	previousConsensus = currentConsensus
-    	if (time.Now().UnixNano()-time_before_gossip)/int64(time.Millisecond) > 61000 {
+    	/*if (time.Now().UnixNano()-time_before_gossip)/int64(time.Millisecond) > 61000 {
     		fmt.Println("Been over a minute, exiting...")
     		break
-    	}
+    	}*/
     }
     time_after_gossip = time.Now().UnixNano()
     if consensus_bool == true {
@@ -294,7 +298,8 @@ func main() {
 				    	if neighbourListSize < 1 {
 				    		neighbourListSize = 1
 				    	}
-				    	fmt.Println("Neighbour List Size Percentage Is:", neighbourListSize)
+				    	neighbourListSize = 10
+				    	fmt.Println("Neighbour List Size Is:", neighbourListSize)
 				    	spawnFunction(spawnAmount, &nodes, neighbourListSize, nodeType)
 				    	fmt.Println("[COMPLETE] SPAWN")
 				    	fmt.Println("Number of goroutines is:", runtime.NumGoroutine())

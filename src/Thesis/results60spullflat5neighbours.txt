@@ -1,0 +1,50 @@
+Starting blockchain simulation program
+[START] 5 %
+Beginning Gossip for: 1000 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 50
+Time for consensus in Milliseconds: 59274
+Time for gossip to end in Milliseconds: 60517
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5040
+[START] 5 %
+Beginning Gossip for: 1000 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 50
+Time for consensus in Milliseconds: 20170
+Time for gossip to end in Milliseconds: 21294
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5037
+[START] 5 %
+Beginning Gossip for: 1000 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 50
+Time for consensus in Milliseconds: 59488
+Time for gossip to end in Milliseconds: 60730
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5043
+[START] 5 %
+Beginning Gossip for: 1000 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 50
+Time for consensus in Milliseconds: 58299
+Time for gossip to end in Milliseconds: 59643
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5070
+[START] 5 %
+Beginning Gossip for: 1000 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 50
+Time for consensus in Milliseconds: 59642
+Time for gossip to end in Milliseconds: 60980
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5045
+[START] 5 %
+Beginning Gossip for: 1000 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 50

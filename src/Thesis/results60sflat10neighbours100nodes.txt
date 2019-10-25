@@ -1,0 +1,410 @@
+Starting blockchain simulation program
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1475
+Time for gossip to end in Milliseconds: 7989
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 987
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1518
+Time for gossip to end in Milliseconds: 8863
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 986
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1233
+Time for gossip to end in Milliseconds: 7840
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 990
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1637
+Time for gossip to end in Milliseconds: 7796
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 995
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1413
+Time for gossip to end in Milliseconds: 7342
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 991
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1490
+Time for gossip to end in Milliseconds: 7695
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 992
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 2007
+Time for gossip to end in Milliseconds: 7862
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 995
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1515
+Time for gossip to end in Milliseconds: 7283
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 989
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1453
+Time for gossip to end in Milliseconds: 6977
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 988
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1495
+Time for gossip to end in Milliseconds: 7224
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 985
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1298
+Time for gossip to end in Milliseconds: 6478
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 992
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1197
+Time for gossip to end in Milliseconds: 5731
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 994
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1119
+Time for gossip to end in Milliseconds: 7977
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 998
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 2186
+Time for gossip to end in Milliseconds: 8463
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 993
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1331
+Time for gossip to end in Milliseconds: 6773
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 984
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1581
+Time for gossip to end in Milliseconds: 7215
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 997
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1505
+Time for gossip to end in Milliseconds: 6672
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 996
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1001
+Time for gossip to end in Milliseconds: 6914
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 988
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1393
+Time for gossip to end in Milliseconds: 6554
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 990
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1069
+Time for gossip to end in Milliseconds: 6663
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 995
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1568
+Time for gossip to end in Milliseconds: 7832
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 992
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1304
+Time for gossip to end in Milliseconds: 7366
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 984
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1494
+Time for gossip to end in Milliseconds: 7322
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 1004
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1462
+Time for gossip to end in Milliseconds: 8202
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 991
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1148
+Time for gossip to end in Milliseconds: 6825
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 991
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1354
+Time for gossip to end in Milliseconds: 6885
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 986
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1430
+Time for gossip to end in Milliseconds: 7546
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 993
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1599
+Time for gossip to end in Milliseconds: 7052
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 988
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1440
+Time for gossip to end in Milliseconds: 7931
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 985
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1221
+Time for gossip to end in Milliseconds: 6561
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 993
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1685
+Time for gossip to end in Milliseconds: 7676
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 986
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1734
+Time for gossip to end in Milliseconds: 7085
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 991
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1144
+Time for gossip to end in Milliseconds: 8005
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 993
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1862
+Time for gossip to end in Milliseconds: 7199
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 993
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1623
+Time for gossip to end in Milliseconds: 7792
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 996
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1287
+Time for gossip to end in Milliseconds: 6676
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 1003
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1438
+Time for gossip to end in Milliseconds: 7078
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 991
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1400
+Time for gossip to end in Milliseconds: 7091
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 985
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1382
+Time for gossip to end in Milliseconds: 8160
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 990
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1283
+Time for gossip to end in Milliseconds: 7890
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 991
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1932
+Time for gossip to end in Milliseconds: 7999
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 993
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1665
+Time for gossip to end in Milliseconds: 7368
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 990
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1405
+Time for gossip to end in Milliseconds: 6828
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 983
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1627
+Time for gossip to end in Milliseconds: 7558
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 1002
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1513
+Time for gossip to end in Milliseconds: 7144
+[END]
+Version: 1 Count: 100
+Total Messages Sent Is: 994
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
