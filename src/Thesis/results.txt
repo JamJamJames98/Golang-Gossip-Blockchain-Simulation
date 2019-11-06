@@ -18,3 +18,16 @@ Total Messages Sent Is: 10046
 [START] 5 Neighbours
 Beginning Gossip for: 1000 nodes
 NeighbourList Size: 10
+Time for consensus in Milliseconds: 1809
+Time for gossip to end in Milliseconds: 8936
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 9998
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 10
+Time for consensus in Milliseconds: 57444
+Time for gossip to end in Milliseconds: 58584
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 10006

@@ -261,7 +261,7 @@ func main() {
 	time_of_consensus := int64(0)
 	time_after_gossip := int64(0)
 	loadedCommands := readFromFile()
-	atomic.AddInt32(randomUpdateInterval, 60)		
+	atomic.AddInt32(randomUpdateInterval, 45)		
 	var nodes []node
 	
 	//create results file
@@ -382,8 +382,8 @@ func main() {
 			    	}
 			    	
 			    	if neighbourListType == "Flat" {
-			    		fmt.Println("[START]", neighbourListSizePercentage, "Neighbours")
-				    	fmt.Fprintln(resultsFile, "[START]", neighbourListSizePercentage, "Neighbours")
+			    		fmt.Println("[START]", neighbourListSizeFlat, "Neighbours")
+				    	fmt.Fprintln(resultsFile, "[START]", neighbourListSizeFlat, "Neighbours")
 				    	fmt.Fprintln(resultsFile, "Beginning Gossip for:", len(nodes), "nodes")
 				    	fmt.Fprintln(resultsFile, "NeighbourList Size:", neighbourListSize)
 			    	} else {
