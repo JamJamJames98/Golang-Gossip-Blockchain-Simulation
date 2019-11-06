@@ -1,0 +1,26 @@
+Starting blockchain simulation program
+Version: 0 Count: 5000
+Total Messages Sent Is: 0
+Version: 0 Count: 5000
+Total Messages Sent Is: 0
+[START] 5 %
+Beginning Gossip for: 5000 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 250
+Time for consensus in Milliseconds: 40077
+Time for gossip to end in Milliseconds: 65076
+[END]
+[START] 5 %
+Beginning Gossip for: 5000 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 250
+Time for consensus in Milliseconds: 50619
+Time for gossip to end in Milliseconds: 115357
+[END]
+[START] 5 %
+Beginning Gossip for: 100 nodes
+NeighbourList Percentage: 5 %
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1565
+Time for gossip to end in Milliseconds: 8037
+[END]
