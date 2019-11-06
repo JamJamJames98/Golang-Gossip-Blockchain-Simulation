@@ -45,7 +45,7 @@ var randomUpdateInterval *int32 = new(int32)
  */
 func runNode(id int, name string, myNode *node, size int) {
 	//waiting for all nodes to be spawned
-	for runtime.NumGoroutine() < size {
+	for runtime.NumGoroutine() < size+1 {
 		time.Sleep(1 * time.Nanosecond)
 	}
 	//node logic
@@ -86,16 +86,17 @@ func runNode(id int, name string, myNode *node, size int) {
 			//neighbourToRequestFrom := rand.Intn(len((*myNode).neighbourNodes))
 			(*myNode).requestData.version = (*myNode).version
 			for i := 0; i < len((*myNode).neighbourNodes); i++ {
+				atomic.AddInt32(updateBackLog, 1)
 				(*myNode).neighbourNodes[i].requestChannel <- (*myNode).requestData
 			}
 		//some other node has requested to my version
-		case recievedData := <- (*myNode).requestChannel:
+		case recievedData := <- (*myNode).requestChannel:	
 			simulateLatency()
 			if recievedData.version < (*myNode).version {
-				atomic.AddInt32(updateBackLog, 1)
 				recievedData.channel <- (*myNode).version
 				(*myNode).numberOfUpdates++
 			}
+			atomic.AddInt32(updateBackLog, -1)
 		}
 	}
 }
@@ -129,8 +130,8 @@ func spawnFunction(size int, nodes *[]node, neighbourListSize int, nodeType stri
 	prev := float64(0)
 	for i := 0; i < size; i++ {
 		prev = progressUpdate(i, size, prev, "Spawn Progress: ")
-		(*nodes)[i].channel = make(chan int, size+1)
-		(*nodes)[i].requestChannel = make(chan RequestData, size+1)
+		(*nodes)[i].channel = make(chan int, size)
+		(*nodes)[i].requestChannel = make(chan RequestData, size)
 		(*nodes)[i].requestData.channel = (*nodes)[i].channel
 		(*nodes)[i].id = i
 		(*nodes)[i].version = 0
@@ -161,7 +162,7 @@ func killRoutines(nodes *[]node) {
 	for runtime.NumGoroutine() > 1 {
 		time.Sleep(1 * time.Nanosecond)
 	}
-	(*nodes) = nil
+	//need to implement proper memory deallocation to fix memory leak
 	manualGarbageCollection()
 }
 
@@ -174,6 +175,9 @@ func manualGarbageCollection() {
     atomic.AddInt32(updateBackLog, -atomic.LoadInt32(updateBackLog))
     runtime.GC()
     debug.FreeOSMemory()
+    var ms runtime.MemStats
+	runtime.ReadMemStats(&ms)
+	fmt.Println(ms.Alloc, "bytes allocated")
 }
 
 /*
@@ -220,13 +224,13 @@ func checkForConsensus(numberOfNodes int, time_of_consensus int64, time_before_g
     	current := atomic.LoadInt32(gossiping)
     	currentConsensus := atomic.LoadInt32(consensus)
     	if current != previous {
-    		fmt.Println("Gossiping is:", atomic.LoadInt32(gossiping))
-			fmt.Println("updateBackLog is:", atomic.LoadInt32(updateBackLog))
-    		fmt.Println("Nodes gossiping is:", current)
-    		fmt.Println("Consensus progress is:", atomic.LoadInt32(consensus))
+    		//fmt.Println("Gossiping is:", atomic.LoadInt32(gossiping))
+			//fmt.Println("updateBackLog is:", atomic.LoadInt32(updateBackLog))
+    		//fmt.Println("Nodes gossiping is:", current)
+    		//fmt.Println("Consensus progress is:", atomic.LoadInt32(consensus))
     	}
     	if currentConsensus != previousConsensus {
-    		fmt.Println("Consensus progress is:", atomic.LoadInt32(consensus))
+    		//fmt.Println("Consensus progress is:", atomic.LoadInt32(consensus))
     	}
     	previous = current
     	previousConsensus = currentConsensus
