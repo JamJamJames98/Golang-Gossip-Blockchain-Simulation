@@ -1,1 +1,9 @@
 Starting blockchain simulation program
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 10
+Time for consensus: Not Reached
+Time for gossip to end in Milliseconds: 0
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 9998

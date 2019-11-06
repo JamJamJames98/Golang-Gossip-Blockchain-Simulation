@@ -77,7 +77,6 @@ func runNode(id int, name string, myNode *node, size int) {
 							(*myNode).numberOfUpdates++
 						}
 					}
-					fmt.Println("Finished sending to neighbours")
 				}
 			}
 			atomic.AddInt32(updateBackLog, -1)
@@ -218,7 +217,7 @@ func checkForConsensus(numberOfNodes int, time_of_consensus int64, time_before_g
     		consensus_bool = true
     	}
     	//debug statements
-    	/current := atomic.LoadInt32(gossiping)
+    	current := atomic.LoadInt32(gossiping)
     	currentConsensus := atomic.LoadInt32(consensus)
     	if current != previous {
     		fmt.Println("Gossiping is:", atomic.LoadInt32(gossiping))
@@ -233,7 +232,8 @@ func checkForConsensus(numberOfNodes int, time_of_consensus int64, time_before_g
     	previousConsensus = currentConsensus
     	
     	//if been over 90 seconds then stop waiting for it
-    	if time.Now().UnixNano()-time_before_gossip/int64(time.Millisecond) > 90000 {
+    	if (time_before_gossip-time.Now().UnixNano())/int64(time.Millisecond) > 90000 {
+    		fmt.Println("Breaking")
     		break
     	}
     }
@@ -375,7 +375,7 @@ func main() {
 				    if (neighbourListType == "Flat") {
 				    	neighbourListSize = int(neighbourListSizeFlat)
 				    } else {
-				    	neighbourListSize = int(neighbourListSizePercentage*float64(spawnAmount)/float64(100))
+				    	neighbourListSize = int(neighbourListSizePercentage*float64(len(nodes))/float64(100))
 				    }
 			    	if neighbourListSize < 1 {
 				    	neighbourListSize = 1
@@ -434,10 +434,10 @@ func main() {
     	//uppdate the type of the neighbour list	
     	} else if currCommandElements[0] == "UPDATENLISTTYPE" && len(currCommandElements) == 2 {
     		if currCommandElements[1] == "Flat" {
-				neighbourListType == "Flat"
+				neighbourListType = "Flat"
     			fmt.Println("[COMPLETE] UPDATENLISTTYPE")
     		} else if currCommandElements[1] == "Percent" {
-    			neighbourListType == "Percent"
+    			neighbourListType = "Percent"
     			fmt.Println("[COMPLETE] UPDATENLISTTYPE")
     		}
     	//reset the network	
