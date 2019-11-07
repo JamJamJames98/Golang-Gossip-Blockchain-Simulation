@@ -1,0 +1,52 @@
+Starting blockchain simulation program
+[START] 13 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 13
+Time for consensus in Milliseconds: 7023
+Time for gossip to end in Milliseconds: 32676
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 65200
+[START] 13 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 13
+Time for consensus in Milliseconds: 9223
+Time for gossip to end in Milliseconds: 38130
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 65275
+[START] 13 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 13
+Time for consensus in Milliseconds: 8607
+Time for gossip to end in Milliseconds: 43104
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 65311
+[START] 13 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 13
+Time for consensus in Milliseconds: 8949
+Time for gossip to end in Milliseconds: 59868
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 65174
+[START] 13 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 13
+Time for consensus in Milliseconds: 11542
+Time for gossip to end in Milliseconds: 64759
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 65338
+[START] 13 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 13
+Time for consensus in Milliseconds: 12044
+Time for gossip to end in Milliseconds: 67913
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 65303
+[START] 13 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 13

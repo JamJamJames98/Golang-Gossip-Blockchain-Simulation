@@ -216,6 +216,7 @@ func checkForConsensus(numberOfNodes int, time_of_consensus int64, time_before_g
 	previous := int32(0)
 	previousConsensus := int32(0)
     for (atomic.LoadInt32(gossiping) > 0 && atomic.LoadInt32(updateBackLog) > 0) || consensus_bool == false {
+    	runtime.Gosched()
     	if atomic.LoadInt32(consensus) == int32(numberOfNodes) && consensus_bool == false {
     		time_of_consensus = time.Now().UnixNano()
     		consensus_bool = true
@@ -322,9 +323,12 @@ func main() {
     		}
     	//broadcast to all nodes	
     	} else if currCommandElements[0] == "BROADCAST" && len(currCommandElements) == 1 {
-    		if len(nodes) > 0 {
-    			
-    			//logic to broadcast
+    		if len(nodes) > 0 {			    	
+			    version++
+			    for i := 0; i < len(nodes); i++ {
+			    	atomic.AddInt32(updateBackLog, 1)
+				    nodes[i].channel <- version
+			    }
     		}
     	//kill all nodes	
     	} else if currCommandElements[0] == "KILL" && len(currCommandElements) == 1 {

@@ -1,0 +1,641 @@
+Starting blockchain simulation program
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 43666
+Time for gossip to end in Milliseconds: 43773
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5042
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 35441
+Time for gossip to end in Milliseconds: 35977
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5046
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 28478
+Time for gossip to end in Milliseconds: 29088
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5036
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44269
+Time for gossip to end in Milliseconds: 45189
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5020
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 43274
+Time for gossip to end in Milliseconds: 43567
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5039
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 43353
+Time for gossip to end in Milliseconds: 43353
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5091
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 39547
+Time for gossip to end in Milliseconds: 39569
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5040
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 43402
+Time for gossip to end in Milliseconds: 43506
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5056
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 37507
+Time for gossip to end in Milliseconds: 38116
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5029
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 41616
+Time for gossip to end in Milliseconds: 41616
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5054
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 19175
+Time for gossip to end in Milliseconds: 19676
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5021
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 30318
+Time for gossip to end in Milliseconds: 30458
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5058
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 41443
+Time for gossip to end in Milliseconds: 41443
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5047
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 29582
+Time for gossip to end in Milliseconds: 29582
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5033
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 42622
+Time for gossip to end in Milliseconds: 42622
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5072
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44261
+Time for gossip to end in Milliseconds: 44261
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5059
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 39566
+Time for gossip to end in Milliseconds: 40136
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5042
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 43324
+Time for gossip to end in Milliseconds: 43324
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5059
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 24261
+Time for gossip to end in Milliseconds: 24261
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5048
+[START] 5 Neighbours
+Beginning Gossip for: 1000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 39604
+Time for gossip to end in Milliseconds: 39604
+[END]
+Version: 1 Count: 1000
+Total Messages Sent Is: 5071
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 45611
+Time for gossip to end in Milliseconds: 45611
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10089
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 42569
+Time for gossip to end in Milliseconds: 42569
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10091
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 42483
+Time for gossip to end in Milliseconds: 42635
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10101
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44234
+Time for gossip to end in Milliseconds: 44234
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10144
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44169
+Time for gossip to end in Milliseconds: 44169
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10138
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 37722
+Time for gossip to end in Milliseconds: 39170
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10045
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44578
+Time for gossip to end in Milliseconds: 44578
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10088
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44640
+Time for gossip to end in Milliseconds: 44667
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10097
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 37560
+Time for gossip to end in Milliseconds: 37560
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10096
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 43627
+Time for gossip to end in Milliseconds: 43627
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10134
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 39436
+Time for gossip to end in Milliseconds: 39495
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10097
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 38516
+Time for gossip to end in Milliseconds: 38520
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10114
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 43163
+Time for gossip to end in Milliseconds: 44129
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10087
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 33428
+Time for gossip to end in Milliseconds: 33428
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10090
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 43647
+Time for gossip to end in Milliseconds: 43647
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10116
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 35559
+Time for gossip to end in Milliseconds: 35559
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10121
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 39679
+Time for gossip to end in Milliseconds: 39782
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10077
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 35741
+Time for gossip to end in Milliseconds: 36512
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10066
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44730
+Time for gossip to end in Milliseconds: 44730
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10105
+[START] 5 Neighbours
+Beginning Gossip for: 2000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 39417
+Time for gossip to end in Milliseconds: 39862
+[END]
+Version: 1 Count: 2000
+Total Messages Sent Is: 10066
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 43840
+Time for gossip to end in Milliseconds: 43840
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25284
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44636
+Time for gossip to end in Milliseconds: 44636
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25389
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 41649
+Time for gossip to end in Milliseconds: 41659
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25290
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44705
+Time for gossip to end in Milliseconds: 44705
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25316
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44509
+Time for gossip to end in Milliseconds: 44509
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25416
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 39804
+Time for gossip to end in Milliseconds: 39804
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25293
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44647
+Time for gossip to end in Milliseconds: 44647
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25305
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44632
+Time for gossip to end in Milliseconds: 44632
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25362
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44599
+Time for gossip to end in Milliseconds: 44599
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25353
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44712
+Time for gossip to end in Milliseconds: 44712
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25432
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44819
+Time for gossip to end in Milliseconds: 44819
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25443
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 42541
+Time for gossip to end in Milliseconds: 42541
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25408
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 43034
+Time for gossip to end in Milliseconds: 43035
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25358
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44508
+Time for gossip to end in Milliseconds: 44508
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25471
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 40746
+Time for gossip to end in Milliseconds: 40746
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25319
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 45149
+Time for gossip to end in Milliseconds: 45149
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25517
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44872
+Time for gossip to end in Milliseconds: 44872
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25477
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44505
+Time for gossip to end in Milliseconds: 44505
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25642
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 42607
+Time for gossip to end in Milliseconds: 42607
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25496
+[START] 5 Neighbours
+Beginning Gossip for: 5000 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 44809
+Time for gossip to end in Milliseconds: 44809
+[END]
+Version: 1 Count: 5000
+Total Messages Sent Is: 25419
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1623
+Time for gossip to end in Milliseconds: 3831
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 246
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1267
+Time for gossip to end in Milliseconds: 3460
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 245
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1320
+Time for gossip to end in Milliseconds: 3587
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 245
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1586
+Time for gossip to end in Milliseconds: 3673
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 244
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1439
+Time for gossip to end in Milliseconds: 3708
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 246
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1332
+Time for gossip to end in Milliseconds: 3718
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 246
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1687
+Time for gossip to end in Milliseconds: 3813
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 243
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 24177
+Time for gossip to end in Milliseconds: 24177
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 253
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1671
+Time for gossip to end in Milliseconds: 3913
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 244
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 43115
+Time for gossip to end in Milliseconds: 43601
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 250
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1124
+Time for gossip to end in Milliseconds: 3474
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 249
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1347
+Time for gossip to end in Milliseconds: 3883
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 248
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 17362
+Time for gossip to end in Milliseconds: 17543
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 251
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 42205
+Time for gossip to end in Milliseconds: 42561
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 252
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1497
+Time for gossip to end in Milliseconds: 4537
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 247
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1606
+Time for gossip to end in Milliseconds: 3886
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 242
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1443
+Time for gossip to end in Milliseconds: 3641
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 248
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1337
+Time for gossip to end in Milliseconds: 3952
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 248
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 1634
+Time for gossip to end in Milliseconds: 4132
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 246
+[START] 5 Neighbours
+Beginning Gossip for: 50 nodes
+NeighbourList Size: 5
+Time for consensus in Milliseconds: 15509
+Time for gossip to end in Milliseconds: 15815
+[END]
+Version: 1 Count: 50
+Total Messages Sent Is: 245
