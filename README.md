@@ -28,20 +28,20 @@ Avaiable commands in the suite:
 *BROADCAST*
 * Sends an update to all nodes in the network
 
-*UPDATENLISTTYPE <TYPE> *
+*UPDATENLISTTYPE <TYPE>*
 * Neighbour list types available:
   * Flat
   * Percent
   
-*UPDATENLISTPERCENT <NUMBER> *
+*UPDATENLISTPERCENT <NUMBER>*
 * Update the percentage of the network to be on the neighbour list
 * Takes in a number from 1 to 100
  
-*UPDATENLISTSIZE <NUMBER> *
+*UPDATENLISTSIZE <NUMBER>*
 * Update the number of neighbours to be on the neighbour list
 * Takes in a number
  
-*UPDATEINTERVALTIME <NUMBER> *
+*UPDATEINTERVALTIME <NUMBER>*
 * Update the time range PUSH nodes wait before requesting for updates
 * Takes in a number
  
