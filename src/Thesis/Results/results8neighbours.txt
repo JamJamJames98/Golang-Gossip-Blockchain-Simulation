@@ -639,7 +639,3 @@ Time for gossip to end in Milliseconds: 4697
 [END]
 Version: 1 Count: 50
 Total Messages Sent Is: 393
-Version: 1 Count: 50
-Total Messages Sent Is: 393
-Version: 1 Count: 50
-Total Messages Sent Is: 393

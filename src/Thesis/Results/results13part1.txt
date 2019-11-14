@@ -383,6 +383,3 @@ Time for gossip to end in Milliseconds: 128623
 [END]
 Version: 1 Count: 5000
 Total Messages Sent Is: 65436
-[START] 13 Neighbours
-Beginning Gossip for: 5000 nodes
-NeighbourList Size: 13

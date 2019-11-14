@@ -177,7 +177,7 @@ func manualGarbageCollection() {
     debug.FreeOSMemory()
     var ms runtime.MemStats
 	runtime.ReadMemStats(&ms)
-	fmt.Println(ms.Alloc, "bytes allocated")
+	//fmt.Println(ms.Alloc, "bytes allocated")
 }
 
 /*
@@ -220,6 +220,7 @@ func checkForConsensus(numberOfNodes int, time_of_consensus int64, time_before_g
     	if atomic.LoadInt32(consensus) == int32(numberOfNodes) && consensus_bool == false {
     		time_of_consensus = time.Now().UnixNano()
     		consensus_bool = true
+    		fmt.Println("Waiting for gossip to end...")
     	}
     	//debug statements
     	current := atomic.LoadInt32(gossiping)
@@ -245,11 +246,15 @@ func checkForConsensus(numberOfNodes int, time_of_consensus int64, time_before_g
     time_after_gossip = time.Now().UnixNano()
     if consensus_bool == true {
     	fmt.Fprintln(resultsFile, "Time for consensus in Milliseconds:",(time_of_consensus-time_before_gossip)/int64(time.Millisecond))
+        fmt.Println("Time for consensus in Milliseconds:",(time_of_consensus-time_before_gossip)/int64(time.Millisecond))
     } else {
     	fmt.Fprintln(resultsFile, "Time for consensus: Not Reached")
+    	fmt.Println("Time for consensus: Not Reached")
     }
     fmt.Fprintln(resultsFile, "Time for gossip to end in Milliseconds:",(time_after_gossip-time_before_gossip)/int64(time.Millisecond))
     fmt.Fprintln(resultsFile, "[END]")
+    fmt.Println("Time for gossip to end in Milliseconds:",(time_after_gossip-time_before_gossip)/int64(time.Millisecond))
+    fmt.Println("[END]")
     manualGarbageCollection()
 }
 
@@ -317,6 +322,7 @@ func main() {
 				    		neighbourListSize = 1
 				    	}
 				    	spawnFunction(spawnAmount, &nodes, neighbourListSize, nodeType)
+				    	fmt.Println("Spawned", spawnAmount, nodeType, "Nodes")
 				    	fmt.Println("[COMPLETE] SPAWN")
 		    		}
     			}
@@ -394,12 +400,16 @@ func main() {
 				    	fmt.Fprintln(resultsFile, "[START]", neighbourListSizeFlat, "Neighbours")
 				    	fmt.Fprintln(resultsFile, "Beginning Gossip for:", len(nodes), "nodes")
 				    	fmt.Fprintln(resultsFile, "NeighbourList Size:", neighbourListSize)
+				    	fmt.Println("Beginning Gossip for:", len(nodes), "nodes")
+				    	fmt.Println("NeighbourList Size:", neighbourListSize)
 			    	} else {
 			    		fmt.Println("[START]", neighbourListSizePercentage, "%")
 				    	fmt.Fprintln(resultsFile, "[START]", neighbourListSizePercentage, "%")
 				    	fmt.Fprintln(resultsFile, "Beginning Gossip for:", len(nodes), "nodes")
 				    	fmt.Fprintln(resultsFile, "NeighbourList Percentage:", neighbourListSizePercentage, "%")
 				    	fmt.Fprintln(resultsFile, "NeighbourList Size:", neighbourListSize)
+				    	fmt.Println("NeighbourList Percentage:", neighbourListSizePercentage, "%")
+				    	fmt.Println("NeighbourList Size:", neighbourListSize)
 			    	}
 			    	version++
 			    	time_before_gossip = time.Now().UnixNano()
@@ -422,10 +432,13 @@ func main() {
     		if newSize, err := strconv.Atoi(currCommandElements[1]); err == nil {
     			if newSize > 100 {
     				neighbourListSizePercentage = float64(100)
+    				fmt.Println("Update Neighbour List Percent To Be: 100 %") 
     			} else if newSize < 1 {
     				neighbourListSizePercentage = float64(1)
+    				fmt.Println("Updated Neighbour List Percent To Be: 1 %")
     			} else {
     				neighbourListSizePercentage = float64(newSize)
+    				fmt.Println("Updated Neighbour List Percent To Be:", newSize, "%")
     			}
     			fmt.Println("[COMPLETE] UPDATENLISTPERCENT")
     		}
@@ -437,15 +450,18 @@ func main() {
     			} else {
     				neighbourListSizeFlat = float64(newSize)
     			}
+    			fmt.Println("Updated Neighbour List Size To Be:", newSize)
     			fmt.Println("[COMPLETE] UPDATENLISTSIZE")
     		}
     	//uppdate the type of the neighbour list	
     	} else if currCommandElements[0] == "UPDATENLISTTYPE" && len(currCommandElements) == 2 {
     		if currCommandElements[1] == "Flat" {
 				neighbourListType = "Flat"
+				fmt.Println("Updated Neighbour List Type To Be Flat")
     			fmt.Println("[COMPLETE] UPDATENLISTTYPE")
     		} else if currCommandElements[1] == "Percent" {
     			neighbourListType = "Percent"
+    			fmt.Println("Updated Neighbour List Type To Be Percent")
     			fmt.Println("[COMPLETE] UPDATENLISTTYPE")
     		}
     	//reset the network	
@@ -453,6 +469,7 @@ func main() {
     		if len(nodes) > 0 {
     			version = 0
     			manualGarbageCollection()
+    			fmt.Println("Reset The Network")
     			fmt.Println("[COMPLETE] RESET")
     		} else {
     			fmt.Println("[ERROR] RESET - No Nodes Spawned")
@@ -460,9 +477,9 @@ func main() {
     	//update the formula to determine how long for a node to wait for until pulling	
     	} else if currCommandElements[0] == "UPDATEINTERVALTIME" && len(currCommandElements) == 2 {
     		if newInterval, err := strconv.Atoi(currCommandElements[1]); err == nil {
-    			fmt.Println("[BEGIN] UPDATEINTERVALTIME", newInterval)
     			atomic.AddInt32(randomUpdateInterval, int32(newInterval)-atomic.LoadInt32(randomUpdateInterval))
-    			fmt.Println("[END] UPDATEINTERVALTIME", newInterval)
+    			fmt.Println("Updated The Pull Node Interval To Be:", newInterval)
+    			fmt.Println("[COMPLETE] UPDATEINTERVALTIME", newInterval)
     		} else {
     			fmt.Println("[ERROR] UPDATEINTERVALTIME", newInterval, "- Use An Integer As Second Argument")
     		}
