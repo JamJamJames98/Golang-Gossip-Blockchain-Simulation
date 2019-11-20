@@ -1,6 +1,3 @@
-# Thesis_Project
- My Thesis
-
 # How To Run
 Run the 'main.go' file as a normal golang file (i.e. will the following command in a shell)
 
